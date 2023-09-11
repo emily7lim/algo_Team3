@@ -1,89 +1,77 @@
 import random
-import time
 
-# Function to perform the Insertion Sort
-def insertion_sort(arr, left, right):
-    key_comparisons = 0
-    for i in range(left + 1, right + 1):
-        key = arr[i]
-        j = i - 1
+def hybridSort(L,S):
+    #we have input array and threshold S as parameters
+    size=len(L)
+    if size>S:
+        #use mergesort
+        
+        if size>1: #minimum size array atleast two elements
+            L1 = L[:(size)//2]
+            L2= L[size//2:]
+            #divide into 2 equal sized sub arrays or problems
+            #find solution to each of these sub problems
+            if (len(L1)<=S):
+                #switch to insertion sort
+               insertion(L1)
+            if (len(L2)<=S):
+                insertion(L2)
+                        
+            if (len(L1)>S ) :
+                L1 = hybridSort(L1,len(L1))
+            if (len(L2)>S):
+                L2 = hybridSort(L2,len(L2))
+            
+            L=merge(L1,L2)
+        else :
+            return
+    else:
+        # insertion
+        insertion(L)
+    return L
 
-        while j >= left and arr[j] > key:
-            arr[j + 1] = arr[j]
-            j -= 1
-            key_comparisons += 1
+def insertion(L):
+    for i in range(1,len(L)):
+            for j in range(i,0,-1):
+                if L[j]<L[j-1]:
+                    L[j],L[j-1] = L[j-1],L[j]
+                else :
+                    break
 
-        arr[j + 1] = key
-
-    return key_comparisons
-
-# Function to merge two sorted subarrays
-def merge(arr, left, mid, right):
-    key_comparisons = 0
-    n1 = mid - left + 1
-    n2 = right - mid
-
-    left_arr = arr[left:mid + 1]
-    right_arr = arr[mid + 1:right + 1]
-
-    i = j = 0
-    k = left
-
-    while i < n1 and j < n2:
-        if left_arr[i] <= right_arr[j]:
-            arr[k] = left_arr[i]
-            i += 1
+def merge(L1,L2):
+    L=[]
+    while (len(L1)!=0 or len(L2)!=0):
+        if (len(L1)!=0 and len(L2)!=0 and L1[0]>L2[0]):
+                L.append(L2[0])
+                L2.remove(L2[0])
+        elif (len(L1)!=0 and len(L2)!=0 and L2[0]>L1[0]):
+            L.append(L1[0])
+            L1.remove(L1[0])
         else:
-            arr[k] = right_arr[j]
-            j += 1
-        k += 1
-        key_comparisons += 1
+            
+            if ( len(L1)!=0 and len(L2)!=0):
+                L.append(L1[0])
+                L.append(L2[0])
+                L1.remove(L1[0])
+                L2.remove(L2[0])
+            else :
+                if (len(L1)==0 and len(L2)!=0):
+                    while (len(L2)!=0):
+                        L.append(L2[0])
+                        L2.remove(L2[0])
+                elif (len(L2)==0 and len(L1)!=0):
+                    L.append(L1[0])
+                    L1.remove(L1[0])
+    return L
 
-    while i < n1:
-        arr[k] = left_arr[i]
-        i += 1
-        k += 1
+# arr = [random.randint(1, 50) for _ in range(0, 10)]
+arr = [3,6,5,2,1,4]
+arrlen = len(arr)
+print("Given array is")
+for i in range(arrlen):
+    print("%d" % arr[i], end=" ")
 
-    while j < n2:
-        arr[k] = right_arr[j]
-        j += 1
-        k += 1
-
-    return key_comparisons
-
-# Function to perform hybrid Mergesort
-def hybrid_mergesort(arr, left, right, threshold):
-    key_comparisons = 0
-    if left < right:
-        if right - left + 1 <= threshold:
-            key_comparisons += insertion_sort(arr, left, right)
-        else:
-            mid = left + (right - left) // 2
-
-            key_comparisons += hybrid_mergesort(arr, left, mid, threshold)
-            key_comparisons += hybrid_mergesort(arr, mid + 1, right, threshold)
-
-            key_comparisons += merge(arr, left, mid, right)
-
-    return key_comparisons
-
-if __name__ == "__main__":
-    arr = [12, 11, 13, 5, 6, 7]
-    n = len(arr)
-    threshold = 124  # Set your threshold here
-
-    print("Original array:", arr)
-
-    key_comparisons = hybrid_mergesort(arr, 0, n - 1, threshold)
-
-    print("Sorted array:", arr)
-
-    for size in [1000, 10000, 100000, 1000000, 10000000]:
-        arr = [random.randint(1, size * 10) for _ in range(size)]
-
-        start_time = time.time()
-        key_comparisons = hybrid_mergesort(arr, 0, size - 1, threshold)
-        end_time = time.time()
-
-        cpu_time_used = end_time - start_time
-        print(f"Size: {size}, Key Comparisons: {key_comparisons}, Time: {cpu_time_used} seconds")
+hybridSort(arr, 10)
+print("\n\nSorted array is")
+for i in range(arrlen):
+    print("%d" % arr[i], end=" ")
