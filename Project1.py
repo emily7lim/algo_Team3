@@ -64,14 +64,5 @@ def merge(L1,L2):
                     L1.remove(L1[0])
     return L
 
-# arr = [random.randint(1, 50) for _ in range(0, 10)]
-arr = [3,6,5,2,1,4]
-arrlen = len(arr)
-print("Given array is")
-for i in range(arrlen):
-    print("%d" % arr[i], end=" ")
-
-hybridSort(arr, 10)
-print("\n\nSorted array is")
-for i in range(arrlen):
-    print("%d" % arr[i], end=" ")
+arr = [3,6,5,2,1,4,10]
+print(hybridSort(arr, 2))
