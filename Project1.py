@@ -31,12 +31,15 @@ def hybridSort(L,S):
     return L
 
 def insertion(L):
+    key_comparison = 0
     for i in range(1,len(L)):
-            for j in range(i,0,-1):
-                if L[j]<L[j-1]:
-                    L[j],L[j-1] = L[j-1],L[j]
-                else :
-                    break
+        for j in range(i,0,-1):
+            key_comparison += 1
+            if L[j]<L[j-1]:
+                L[j],L[j-1] = L[j-1],L[j]
+            else :
+                break
+    return key_comparison 
 
 def merge(L1,L2):
     L=[]
