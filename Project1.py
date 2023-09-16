@@ -1,4 +1,5 @@
 import random
+import time
 
 def hybridSort(L,S):
     #we have input array and threshold S as parameters
@@ -23,7 +24,7 @@ def hybridSort(L,S):
                 L2 = hybridSort(L2,len(L2))
             
             L=merge(L1,L2)
-        else :
+        else:
             return
     else:
         # insertion
@@ -37,35 +38,30 @@ def insertion(L):
             key_comparison += 1
             if L[j]<L[j-1]:
                 L[j],L[j-1] = L[j-1],L[j]
-            else :
+            else:
                 break
-    return key_comparison 
+    return key_comparison
 
 def merge(L1,L2):
     L=[]
-    while (len(L1)!=0 or len(L2)!=0):
-        if (len(L1)!=0 and len(L2)!=0 and L1[0]>L2[0]):
-                L.append(L2[0])
-                L2.remove(L2[0])
-        elif (len(L1)!=0 and len(L2)!=0 and L2[0]>L1[0]):
+    kc=0
+    while (len(L1) != 0 and len(L2) != 0):
+        kc+=1
+        print(L1)
+        if(L1[0]<L2[0]):
             L.append(L1[0])
             L1.remove(L1[0])
-        else:
-            
-            if ( len(L1)!=0 and len(L2)!=0):
-                L.append(L1[0])
-                L.append(L2[0])
-                L1.remove(L1[0])
-                L2.remove(L2[0])
-            else :
-                if (len(L1)==0 and len(L2)!=0):
-                    while (len(L2)!=0):
-                        L.append(L2[0])
-                        L2.remove(L2[0])
-                elif (len(L2)==0 and len(L1)!=0):
-                    L.append(L1[0])
-                    L1.remove(L1[0])
+        elif(L2[0]<L1[0]):
+            L.append(L2[0])
+            L2.remove(L2[0])
+        else: #the 1st element of 2 halves are equal
+            if(len(L1)==1 or len(L2)==1): break
+            L.append(L1[0])
+            L.append(L2[0])
+            L1.remove(L1[0])
+            L2.remove(L2[0])
     return L
 
-arr = [3,6,5,2,1,4,10]
-print(hybridSort(arr, 2))
+arr = [14,40,28,31,3,15,17,51]
+print(hybridSort(arr,1))
+# print(merge([14,40,28,31],[3,15,17,51]))
