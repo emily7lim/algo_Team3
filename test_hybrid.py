@@ -31,6 +31,16 @@ def test_empt():
     output = Project1.hybridSort([], threshold_5)
     assert output==[]
 
+def test_odd():
+    # verify odd array works
+    output = Project1.hybridSort([22,1,3,2,6,8,9], threshold_5)
+    assert output==[1,2,3,6,8,9,22]
+
+def test_even():
+    # verify even array works
+    output = Project1.hybridSort([22,1,3,2,6,8], threshold_5)
+    assert output==[1,2,3,6,8,22]
+
 # -------------- test for insertionsort ------------------
 def test_small():
     # check algo for small array size works
