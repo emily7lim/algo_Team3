@@ -2,6 +2,7 @@
 # To test for test case, type pytest in terminal
 import Project1
 
+threshold_1 = 1
 threshold_5 = 5 #size>5 for merge
 threshold_10 = 10
 threshold_100 = 100 #size<100 for insertion
@@ -49,7 +50,7 @@ def test_odd10():
     assert output==([1,2,3,6,8,9,22],12)
 
 def test_even10():
-    # verify even array, inseriton works
+    # verify even array, insertion works
     output = Project1.hybridSort([22,1,3,2,6,8], threshold_10)
     assert output==([1,2,3,6,8,22],10)
 
@@ -67,4 +68,12 @@ def test_hybrid_kc():
 def test_low_threshold():
     # merge recursion then insertion
     output = Project1.hybridSort([3,6,5,11,2,1,4,10,22,60,16,23,14,15,21], threshold_5)
-    assert output==[1,2,3,4,5,6,10,11,14,15,16,21,22,23,60]
+    assert output==([1,2,3,4,5,6,10,11,14,15,16,21,22,23,60],46)
+
+def test_duplicate():
+    output = Project1.hybridSort([2,1,4,2],threshold_5)
+    assert output == ([1,2,2,4],4)
+
+def test_duplicat():
+    output = Project1.hybridSort([2,1,4,2],threshold_1)
+    assert output == ([1,2,2,4],4)
