@@ -1,6 +1,7 @@
 # This file tests all the testcase that we can possibly think of, there may be repeated testcase but with different values in array, just to double check.
 # To test for test case, type pytest in terminal
 import Project1
+import mergesort
 
 threshold_1 = 1
 threshold_5 = 5 #size>5 for merge
@@ -85,3 +86,12 @@ def test_low_threshold():
     # merge then insertion
     output = Project1.hybridSort([3,6,5,11,2,1,4,10,22,60,16,23,14,15,21], threshold_5)
     assert output==([1,2,3,4,5,6,10,11,14,15,16,21,22,23,60],46)
+
+
+
+
+# -------------- test for original mergesort ------------------
+def test_merge_kc():
+    # for merge sort
+    output = mergesort.MergeSort([14,40,28,31,3,15,17,51],threshold_5)
+    assert output == 9
