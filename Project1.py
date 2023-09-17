@@ -56,13 +56,13 @@ def merge(L1,L2):
         elif(L2[0]<L1[0]):
             modifyArray(L,L2)
         else: #the 1st element of 2 halves are equal
-            if(len(L1)==1 or len(L2)==1): break
             modifyArray(L,L1)
             modifyArray(L,L2)
-    if(L1==[]):
-        modifyArray(L,L2)
-    elif (L2==[]):
-        modifyArray(L,L1)
+    while (L1 != [] or L2 != []):
+        if(L1==[]):
+            modifyArray(L,L2)
+        elif (L2==[]):
+            modifyArray(L,L1)
     return L,kc
 
 def modifyArray(L, arr):
@@ -71,7 +71,8 @@ def modifyArray(L, arr):
 
 # arr = [14,40,28,31,3,15,17,51]
 # arr = [22,1,3,2,6,8,9]
-arr = [3,6,5,11,2,1,4,10,22,60,16,23,14,15,21]
-print(hybridSort(arr,5))
+# arr = [3,6,5,11,2,1,4,10,22,60,16,23,14,15,21]
+arr = [2,1,4,2]
+print(hybridSort(arr,1))
 # print(insertion([3,5,1,6,2]))
 # print(merge([14,40,28,31],[3,15,17,51]))
