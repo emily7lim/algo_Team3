@@ -1,12 +1,9 @@
 import random
 import time
 
-def hybridSort(L,S):
-    #we have input array and threshold S as parameters
+def hybridSort(L,S): #input array L and threshold S as parameters
     size=len(L)
-    if size>S:
-        #use mergesort
-        
+    if size>S: #merge
         if size>1: #minimum size array atleast two elements
             L1 = L[:(size)//2]
             L2= L[size//2:]
@@ -26,8 +23,7 @@ def hybridSort(L,S):
             L=merge(L1,L2)
         else:
             return
-    else:
-        # insertion
+    else: # insertion
         insertion(L)
     return L
 
@@ -45,12 +41,12 @@ def insertion(L):
 def merge(L1,L2):
     L=[]
     kc=0
-    while (len(L1) != 0 and len(L2) != 0):
+    while (L1 != [] and L2 != []):
         kc+=1
-        print(L1)
         if(L1[0]<L2[0]):
             L.append(L1[0])
             L1.remove(L1[0])
+            print(L1,L2)
         elif(L2[0]<L1[0]):
             L.append(L2[0])
             L2.remove(L2[0])
@@ -60,6 +56,15 @@ def merge(L1,L2):
             L.append(L2[0])
             L1.remove(L1[0])
             L2.remove(L2[0])
+    if(L1==[]):
+        # L.append(L1[0])
+        L.append(L2[0])
+        # L1.remove(L1[0])
+        L2.remove(L2[0])
+    elif (L2==[]):
+        L.append(L1[0])
+        L1.remove(L1[0])
+
     return L
 
 arr = [14,40,28,31,3,15,17,51]
