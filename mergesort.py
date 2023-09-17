@@ -1,8 +1,15 @@
 def merge(L1,L2):
     L=[] #temp arr to str sorted
-    # kc=0
+    kc=0
+    if (type(L1) is tuple):
+        L1,keys=L1
+        kc+=keys
+    if (type(L2) is tuple):
+        L2,keys=L2
+        kc+=keys
+
     while (L1 != [] and L2 != []):
-        # kc+=1
+        kc+=1
         if(L1[0]<L2[0]):
             modifyArray(L,L1)
         elif(L2[0]<L1[0]):
@@ -15,8 +22,8 @@ def merge(L1,L2):
             modifyArray(L,L2)
         elif (L2==[]):
             modifyArray(L,L1)
-    # return L,kc
-    return L
+    return L,kc
+    # return L
 
 def modifyArray(L, arr):
     L.append(arr[0])
@@ -29,11 +36,11 @@ def MergeSort(L):
     else:
         x1 =  MergeSort(L[:(mid+1)])
         x2 =  MergeSort(L[(mid+1):])
-    n=0
-    m= len(L)-1
+    print(x1,x2)
+    L,kc= merge(x1,x2)
+    print(kc)
+    return L,kc
 
-    return merge(x1,x2)
 
-
-arr = [4,23,2,1,4,7,6]
+arr = [4,23,2,1,5,7,6]
 print(MergeSort(arr))
