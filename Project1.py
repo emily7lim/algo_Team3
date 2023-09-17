@@ -14,25 +14,23 @@ def hybridSort(L,S): #input array L and threshold S as parameters
             if (len(L1) <= S):
                 #switch to insertion sort
                kc+=insertion(L1)
-               print(kc,"II")
             if (len(L2) <= S):
                 kc+=insertion(L2)
-                print(kc,"&")
             if (len(L1) > S):
-                print(L1)
                 L1,keym = hybridSort(L1,len(L1))
                 kc+=keym
             if (len(L2) > S):
                 L2, keym = hybridSort(L2,len(L2))
                 kc+=keym
-            print(L1,L2)
+
             L,keys=merge(L1,L2)
             kc+=keys
+
         else:
             return
     else: # insertion
         kc+=insertion(L)
-    # print(kc)
+        
     return L,kc
 
 def insertion(L):
@@ -71,8 +69,8 @@ def modifyArray(L, arr):
 
 # arr = [14,40,28,31,3,15,17,51]
 # arr = [22,1,3,2,6,8,9]
-# arr = [3,6,5,11,2,1,4,10,22,60,16,23,14,15,21]
-arr = [2,1,4,2]
-print(hybridSort(arr,1))
+arr = [3,6,5,11,2,1,4,10,22,60,16,23,14,15,21]
+# arr = [2,1,4,2]
+print(hybridSort(arr,5))
 # print(insertion([3,5,1,6,2]))
 # print(merge([14,40,28,31],[3,15,17,51]))
