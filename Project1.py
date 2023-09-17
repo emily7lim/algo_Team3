@@ -19,10 +19,13 @@ def hybridSort(L,S): #input array L and threshold S as parameters
                 kc+=insertion(L2)
                 print(kc,"&")
             if (len(L1) > S):
-                L1 = hybridSort(L1,len(L1))
+                print(L1)
+                L1,keym = hybridSort(L1,len(L1))
+                kc+=keym
             if (len(L2) > S):
-                L2 = hybridSort(L2,len(L2))
-            
+                L2, keym = hybridSort(L2,len(L2))
+                kc+=keym
+            print(L1,L2)
             L,keys=merge(L1,L2)
             kc+=keys
         else:
@@ -67,7 +70,8 @@ def modifyArray(L, arr):
     arr.remove(arr[0])
 
 # arr = [14,40,28,31,3,15,17,51]
-arr = [22,1,3,2,6,8,9]
+# arr = [22,1,3,2,6,8,9]
+arr = [3,6,5,11,2,1,4,10,22,60,16,23,14,15,21]
 print(hybridSort(arr,5))
 # print(insertion([3,5,1,6,2]))
 # print(merge([14,40,28,31],[3,15,17,51]))
