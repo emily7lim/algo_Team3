@@ -54,6 +54,22 @@ def test_even10():
     output = Project1.hybridSort([22,1,3,2,6,8], threshold_10)
     assert output==([1,2,3,6,8,22],10)
 
+def test_duplicate():
+    output = Project1.hybridSort([2,1,4,2],threshold_5)
+    assert output == ([1,2,2,4],4)
+
+def test_duplicat():
+    output = Project1.hybridSort([2,1,4,2],threshold_1)
+    assert output == ([1,2,2,4],4)
+
+def test_duplicate_all():
+    output = Project1.hybridSort([5,5,5,5,5],threshold_1)
+    assert output == ([5,5,5,5,5],5)
+
+def test_duplicate_all():
+    output = Project1.hybridSort([5,5,5,5,5],threshold_10)
+    assert output == ([5,5,5,5,5],4)
+
 # -------------- test for hybridsort ------------------
 def test_small():
     # goes to only insertion sort
@@ -66,14 +82,6 @@ def test_hybrid_kc():
     assert output == ([1,2,3,4,5,6,10],14)
 
 def test_low_threshold():
-    # merge recursion then insertion
+    # merge then insertion
     output = Project1.hybridSort([3,6,5,11,2,1,4,10,22,60,16,23,14,15,21], threshold_5)
     assert output==([1,2,3,4,5,6,10,11,14,15,16,21,22,23,60],46)
-
-def test_duplicate():
-    output = Project1.hybridSort([2,1,4,2],threshold_5)
-    assert output == ([1,2,2,4],4)
-
-def test_duplicat():
-    output = Project1.hybridSort([2,1,4,2],threshold_1)
-    assert output == ([1,2,2,4],4)
