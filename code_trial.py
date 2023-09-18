@@ -78,12 +78,12 @@ if __name__ == "__main__":
 
     print("Sorted array:", arr)
 
-    for size in [1000, 10000, 100000, 1000000, 10000000]:
-        arr = [random.randint(1, size * 10) for _ in range(size)]
+    for i in range(1000,10000000,100000):
+        arr = [random.randint(1, i * 10) for _ in range(i)]
 
         start_time = time.time()
-        key_comparisons = hybrid_mergesort(arr, 0, size - 1, threshold)
+        key_comparisons = hybrid_mergesort(arr, 0, i - 1, threshold)
         end_time = time.time()
 
         cpu_time_used = end_time - start_time
-        print(f"Size: {size}, Key Comparisons: {key_comparisons}, Time: {cpu_time_used} seconds")
+        print(f"Size: {i}, Key Comparisons: {key_comparisons}, Time: {cpu_time_used} seconds")
