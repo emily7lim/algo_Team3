@@ -32,7 +32,7 @@ def modifyArray(L, arr):
 def MergeSort(L):
     mid = (len(L)-1)//2 #index to split at
     if (len(L)==0 or len(L)==1):
-        return L,kc
+        return L,0
     else:
         x1 =  MergeSort(L[:(mid+1)])
         x2 =  MergeSort(L[(mid+1):])
@@ -41,5 +41,5 @@ def MergeSort(L):
     return L,kc
 
 
-arr = [4,23,2,1,5,7,6]
+arr = [4]
 print(MergeSort(arr))
