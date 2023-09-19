@@ -1,6 +1,6 @@
 # This file tests all the testcase that we can possibly think of, there may be repeated testcase but with different values in array, just to double check.
 # To test for test case, type pytest in terminal
-import Project1
+import draft.Project1 as Project1
 import mergesort
 
 threshold_1 = 1
