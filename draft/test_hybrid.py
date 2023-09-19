@@ -120,3 +120,13 @@ def test_mergesort_duplicate():
     # for merge sort
     output = mergesort.MergeSort([4,23,2,1,4,7,6])
     assert output == ([1,2,4,4,6,7,23],12)
+
+def test_mergesort_empty():
+    # for merge sort
+    output = mergesort.MergeSort([])
+    assert output == ([],0)
+
+def test_mergesort_one():
+    # for merge sort
+    output = mergesort.MergeSort([1])
+    assert output == ([1],0)
