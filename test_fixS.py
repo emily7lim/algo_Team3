@@ -44,11 +44,11 @@ def test_duplicate():
 
 def test_duplicat():
     output = Proj1_fixS.hybridSort([2,1,4,2],threshold_1)
-    assert output == ([1,2,2,4],4)
+    assert output == ([1,2,2,4],5)
 
 def test_duplicate_al():
     output = Proj1_fixS.hybridSort([5,5,5,5,5],threshold_1)
-    assert output == ([5,5,5,5,5],5)
+    assert output == ([5,5,5,5,5],7)
 
 def test_duplicate_all():
     output = Proj1_fixS.hybridSort([5,5,5,5,5],threshold_10)

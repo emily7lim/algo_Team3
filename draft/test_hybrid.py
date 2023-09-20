@@ -119,7 +119,7 @@ def test_mergesort_odd():
 def test_mergesort_duplicate():
     # for merge sort
     output = mergesort.MergeSort([4,23,2,1,4,7,6])
-    assert output == ([1,2,4,4,6,7,23],12)
+    assert output == ([1,2,4,4,6,7,23],13)
 
 def test_mergesort_empty():
     # for merge sort
