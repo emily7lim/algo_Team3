@@ -1,4 +1,4 @@
-def merge(L1,L2):
+def origMerge(L1,L2):
     merged=[] #temp arr to str sorted
     kc=0
     if (type(L1) is tuple):
@@ -20,17 +20,17 @@ def merge(L1,L2):
     merged.extend(L2[j:])
     return merged, kc
 
-def MergeSort(L):
+def origMergeSort(L):
     mid = (len(L)-1)//2 #index to split at
     if (len(L)==0 or len(L)==1):
         return L,0
     else:
-        x1 =  MergeSort(L[:(mid+1)])
-        x2 =  MergeSort(L[(mid+1):])
+        x1 =  origMergeSort(L[:(mid+1)])
+        x2 =  origMergeSort(L[(mid+1):])
 
-    L,kc= merge(x1,x2)
+    L,kc= origMerge(x1,x2)
     return L,kc
 
 
 arr = [4,23,2,1,4,7,6]
-print(MergeSort(arr))
+print(origMergeSort(arr))
