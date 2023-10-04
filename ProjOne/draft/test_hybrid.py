@@ -108,25 +108,25 @@ def test_low_threshold():
 # -------------- test for original mergesort ------------------
 def test_mergesort():
     # for merge sort
-    output = mergesort.MergeSort([14,40,28,31,3,15,17,51])
+    output = mergesort.origMergeSort([14,40,28,31,3,15,17,51])
     assert output == ([3,14,15,17,28,31,40,51],16)
 
 def test_mergesort_odd():
     # for merge sort
-    output = mergesort.MergeSort([4,23,2,1,5,7,6])
+    output = mergesort.origMergeSort([4,23,2,1,5,7,6])
     assert output == ([1,2,4,5,6,7,23],13)
 
 def test_mergesort_duplicate():
     # for merge sort
-    output = mergesort.MergeSort([4,23,2,1,4,7,6])
+    output = mergesort.origMergeSort([4,23,2,1,4,7,6])
     assert output == ([1,2,4,4,6,7,23],13)
 
 def test_mergesort_empty():
     # for merge sort
-    output = mergesort.MergeSort([])
+    output = mergesort.origMergeSort([])
     assert output == ([],0)
 
 def test_mergesort_one():
     # for merge sort
-    output = mergesort.MergeSort([1])
+    output = mergesort.origMergeSort([1])
     assert output == ([1],0)
