@@ -9,19 +9,23 @@ def addEdge(index, vertice, weight):
 
 def dijkstra(src):
     d = [np.inf for i in range(size)]
+    print(adj)
     pq = []
     d[src] = 0
     heapq.heappush(pq, (0, src))
 
     while pq:
-        # print(pq)
-        v, u = heapq.heappop(pq)
-        for i,j in adj[u]:
-            if d[i] > d[u] + j:
-                d[i] = d[u]+j
+        #choose according to weights thus weights in front
+        vertex = heapq.heappop(pq)[1]
+        # print(weights, vertex, adj[vertex],d)
+        for i,j in adj[vertex]:
+            # print(i,j,vertex,'AA')
+            if d[i] > d[vertex] + j:
+                d[i] = d[vertex]+j
                 heapq.heappush(pq,(d[i],i))
     for i in range(size):
             print(f"{i} \t\t {d[i]}")
+    # return d
 
 
 size = 5
@@ -52,3 +56,4 @@ addEdge(3,4,4)
 addEdge(4,0,7)
 addEdge(4,3,6)
 dijkstra(0)
+# print(dijkstra(0))
